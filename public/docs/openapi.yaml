@@ -1,0 +1,884 @@
+openapi: 3.0.3
+info:
+  title: Laravel
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost'
+paths:
+  /api/companies:
+    get:
+      summary: 'Display a listing of the resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'All companies retrieved successfully.'
+                  data:
+                    -
+                      id: 1
+                      created_at: '2022-04-11T17:44:38.000000Z'
+                      updated_at: '2022-04-11T17:44:38.000000Z'
+                      name: 'Company A'
+                      parent_company_id: null
+                      parent: null
+                    -
+                      id: 2
+                      created_at: '2022-04-11T17:44:47.000000Z'
+                      updated_at: '2022-04-11T17:44:47.000000Z'
+                      name: 'Company B'
+                      parent_company_id: 1
+                      parent:
+                        id: 1
+                        created_at: '2022-04-11T17:44:38.000000Z'
+                        updated_at: '2022-04-11T17:44:38.000000Z'
+                        name: 'Company A'
+                        parent_company_id: null
+                    -
+                      id: 3
+                      created_at: '2022-04-11T17:44:58.000000Z'
+                      updated_at: '2022-04-11T17:44:58.000000Z'
+                      name: 'Company C'
+                      parent_company_id: 2
+                      parent:
+                        id: 2
+                        created_at: '2022-04-11T17:44:47.000000Z'
+                        updated_at: '2022-04-11T17:44:47.000000Z'
+                        name: 'Company B'
+                        parent_company_id: 1
+                properties:
+                  message:
+                    type: string
+                    example: 'All companies retrieved successfully.'
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        created_at: '2022-04-11T17:44:38.000000Z'
+                        updated_at: '2022-04-11T17:44:38.000000Z'
+                        name: 'Company A'
+                        parent_company_id: null
+                        parent: null
+                      -
+                        id: 2
+                        created_at: '2022-04-11T17:44:47.000000Z'
+                        updated_at: '2022-04-11T17:44:47.000000Z'
+                        name: 'Company B'
+                        parent_company_id: 1
+                        parent:
+                          id: 1
+                          created_at: '2022-04-11T17:44:38.000000Z'
+                          updated_at: '2022-04-11T17:44:38.000000Z'
+                          name: 'Company A'
+                          parent_company_id: null
+                      -
+                        id: 3
+                        created_at: '2022-04-11T17:44:58.000000Z'
+                        updated_at: '2022-04-11T17:44:58.000000Z'
+                        name: 'Company C'
+                        parent_company_id: 2
+                        parent:
+                          id: 2
+                          created_at: '2022-04-11T17:44:47.000000Z'
+                          updated_at: '2022-04-11T17:44:47.000000Z'
+                          name: 'Company B'
+                          parent_company_id: 1
+                    items:
+                      type: object
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'The name of the company.'
+                  example: dolores
+                parent_company_id:
+                  type: integer
+                  description: 'The id of the parent company.'
+                  example: 10
+              required:
+                - name
+                - parent_company_id
+      security: []
+  '/api/companies/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Company retrieved successfully'
+                  data:
+                    id: 1
+                    created_at: '2022-04-11T17:44:38.000000Z'
+                    updated_at: '2022-04-11T17:44:38.000000Z'
+                    name: 'Company A'
+                    parent_company_id: null
+                    parent: null
+                properties:
+                  message:
+                    type: string
+                    example: 'Company retrieved successfully'
+                  data:
+                    type: object
+                    example:
+                      id: 1
+                      created_at: '2022-04-11T17:44:38.000000Z'
+                      updated_at: '2022-04-11T17:44:38.000000Z'
+                      name: 'Company A'
+                      parent_company_id: null
+                      parent: null
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: 'Update the specified resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'The name of the company.'
+                  example: temporibus
+                parent_company_id:
+                  type: integer
+                  description: 'The id of the parent company.'
+                  example: 3
+              required:
+                - name
+                - parent_company_id
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the company.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/companies/{company}/edit':
+    get:
+      summary: 'Show the form for editing the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: company
+        description: ''
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/stations:
+    get:
+      summary: 'Display a listing of the resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'All stations retrieved successfully.'
+                  data:
+                    -
+                      id: 1
+                      created_at: '2022-04-11T17:45:42.000000Z'
+                      updated_at: '2022-04-11T17:45:42.000000Z'
+                      name: 'Station 1'
+                      latitude: '60.166462584790935'
+                      longitude: '24.91596450563738'
+                      address: 'Address 1'
+                      company_id: 1
+                      company:
+                        id: 1
+                        created_at: '2022-04-11T17:44:38.000000Z'
+                        updated_at: '2022-04-11T17:44:38.000000Z'
+                        name: 'Company A'
+                        parent_company_id: null
+                    -
+                      id: 2
+                      created_at: '2022-04-11T17:46:08.000000Z'
+                      updated_at: '2022-04-11T17:46:08.000000Z'
+                      name: 'Station 2'
+                      latitude: '60.166580870728325'
+                      longitude: '24.922622060349735'
+                      address: 'Address 2'
+                      company_id: 2
+                      company:
+                        id: 2
+                        created_at: '2022-04-11T17:44:47.000000Z'
+                        updated_at: '2022-04-11T17:44:47.000000Z'
+                        name: 'Company B'
+                        parent_company_id: 1
+                    -
+                      id: 3
+                      created_at: '2022-04-11T17:46:35.000000Z'
+                      updated_at: '2022-04-11T17:46:35.000000Z'
+                      name: 'Station 3'
+                      latitude: '60.17509633923671'
+                      longitude: '24.953294365988803'
+                      address: 'Address 3'
+                      company_id: 3
+                      company:
+                        id: 3
+                        created_at: '2022-04-11T17:44:58.000000Z'
+                        updated_at: '2022-04-11T17:44:58.000000Z'
+                        name: 'Company C'
+                        parent_company_id: 2
+                    -
+                      id: 4
+                      created_at: '2022-04-11T17:47:05.000000Z'
+                      updated_at: '2022-04-11T17:47:05.000000Z'
+                      name: 'Station 4'
+                      latitude: '60.166462584790935'
+                      longitude: '24.91596450563738'
+                      address: 'Address 1'
+                      company_id: 3
+                      company:
+                        id: 3
+                        created_at: '2022-04-11T17:44:58.000000Z'
+                        updated_at: '2022-04-11T17:44:58.000000Z'
+                        name: 'Company C'
+                        parent_company_id: 2
+                    -
+                      id: 5
+                      created_at: '2022-04-11T20:18:40.000000Z'
+                      updated_at: '2022-04-11T20:18:40.000000Z'
+                      name: 'Station 5'
+                      latitude: '60.20450948475884'
+                      longitude: '24.801714096883828'
+                      address: 'Address 5'
+                      company_id: 2
+                      company:
+                        id: 2
+                        created_at: '2022-04-11T17:44:47.000000Z'
+                        updated_at: '2022-04-11T17:44:47.000000Z'
+                        name: 'Company B'
+                        parent_company_id: 1
+                properties:
+                  message:
+                    type: string
+                    example: 'All stations retrieved successfully.'
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        created_at: '2022-04-11T17:45:42.000000Z'
+                        updated_at: '2022-04-11T17:45:42.000000Z'
+                        name: 'Station 1'
+                        latitude: '60.166462584790935'
+                        longitude: '24.91596450563738'
+                        address: 'Address 1'
+                        company_id: 1
+                        company:
+                          id: 1
+                          created_at: '2022-04-11T17:44:38.000000Z'
+                          updated_at: '2022-04-11T17:44:38.000000Z'
+                          name: 'Company A'
+                          parent_company_id: null
+                      -
+                        id: 2
+                        created_at: '2022-04-11T17:46:08.000000Z'
+                        updated_at: '2022-04-11T17:46:08.000000Z'
+                        name: 'Station 2'
+                        latitude: '60.166580870728325'
+                        longitude: '24.922622060349735'
+                        address: 'Address 2'
+                        company_id: 2
+                        company:
+                          id: 2
+                          created_at: '2022-04-11T17:44:47.000000Z'
+                          updated_at: '2022-04-11T17:44:47.000000Z'
+                          name: 'Company B'
+                          parent_company_id: 1
+                      -
+                        id: 3
+                        created_at: '2022-04-11T17:46:35.000000Z'
+                        updated_at: '2022-04-11T17:46:35.000000Z'
+                        name: 'Station 3'
+                        latitude: '60.17509633923671'
+                        longitude: '24.953294365988803'
+                        address: 'Address 3'
+                        company_id: 3
+                        company:
+                          id: 3
+                          created_at: '2022-04-11T17:44:58.000000Z'
+                          updated_at: '2022-04-11T17:44:58.000000Z'
+                          name: 'Company C'
+                          parent_company_id: 2
+                      -
+                        id: 4
+                        created_at: '2022-04-11T17:47:05.000000Z'
+                        updated_at: '2022-04-11T17:47:05.000000Z'
+                        name: 'Station 4'
+                        latitude: '60.166462584790935'
+                        longitude: '24.91596450563738'
+                        address: 'Address 1'
+                        company_id: 3
+                        company:
+                          id: 3
+                          created_at: '2022-04-11T17:44:58.000000Z'
+                          updated_at: '2022-04-11T17:44:58.000000Z'
+                          name: 'Company C'
+                          parent_company_id: 2
+                      -
+                        id: 5
+                        created_at: '2022-04-11T20:18:40.000000Z'
+                        updated_at: '2022-04-11T20:18:40.000000Z'
+                        name: 'Station 5'
+                        latitude: '60.20450948475884'
+                        longitude: '24.801714096883828'
+                        address: 'Address 5'
+                        company_id: 2
+                        company:
+                          id: 2
+                          created_at: '2022-04-11T17:44:47.000000Z'
+                          updated_at: '2022-04-11T17:44:47.000000Z'
+                          name: 'Company B'
+                          parent_company_id: 1
+                    items:
+                      type: object
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'The name of the station.'
+                  example: odit
+                address:
+                  type: string
+                  description: 'The address of the station.'
+                  example: quae
+                latitude:
+                  type: number
+                  description: 'The latitude of the station.'
+                  example: 45708791.182897
+                longitude:
+                  type: number
+                  description: 'The longitude of the station.'
+                  example: 0.879
+                company_id:
+                  type: integer
+                  description: 'The id of the company.'
+                  example: 16
+              required:
+                - name
+                - address
+                - latitude
+                - longitude
+                - company_id
+      security: []
+  '/api/stations/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Station retrieved successfully'
+                  data:
+                    id: 1
+                    created_at: '2022-04-11T17:45:42.000000Z'
+                    updated_at: '2022-04-11T17:45:42.000000Z'
+                    name: 'Station 1'
+                    latitude: '60.166462584790935'
+                    longitude: '24.91596450563738'
+                    address: 'Address 1'
+                    company_id: 1
+                    company:
+                      id: 1
+                      created_at: '2022-04-11T17:44:38.000000Z'
+                      updated_at: '2022-04-11T17:44:38.000000Z'
+                      name: 'Company A'
+                      parent_company_id: null
+                properties:
+                  message:
+                    type: string
+                    example: 'Station retrieved successfully'
+                  data:
+                    type: object
+                    example:
+                      id: 1
+                      created_at: '2022-04-11T17:45:42.000000Z'
+                      updated_at: '2022-04-11T17:45:42.000000Z'
+                      name: 'Station 1'
+                      latitude: '60.166462584790935'
+                      longitude: '24.91596450563738'
+                      address: 'Address 1'
+                      company_id: 1
+                      company:
+                        id: 1
+                        created_at: '2022-04-11T17:44:38.000000Z'
+                        updated_at: '2022-04-11T17:44:38.000000Z'
+                        name: 'Company A'
+                        parent_company_id: null
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: 'Update the specified resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'The name of the station.'
+                  example: rerum
+                address:
+                  type: string
+                  description: 'The address of the station.'
+                  example: qui
+                latitude:
+                  type: number
+                  description: 'The latitude of the station.'
+                  example: 6777.14853
+                longitude:
+                  type: number
+                  description: 'The longitude of the station.'
+                  example: 221587.94
+                company_id:
+                  type: integer
+                  description: 'The id of the company.'
+                  example: 15
+              required:
+                - name
+                - address
+                - latitude
+                - longitude
+                - company_id
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the station.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/stations/{station}/edit':
+    get:
+      summary: 'Show the form for editing the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: station
+        description: ''
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/companies/create:
+    get:
+      summary: 'Show the form for creating a new resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+  /api/stations/nearby:
+    get:
+      summary: 'Display a list of stations within the radius of n kilometers from a point (latitude, longitude), and stations in the same location are grouped together.'
+      description: ''
+      parameters:
+        -
+          in: query
+          name: latitude
+          description: 'The latitude of the point.'
+          example: 3.1922426
+          required: true
+          schema:
+            type: number
+            description: 'The latitude of the point.'
+            example: 3.1922426
+        -
+          in: query
+          name: longitude
+          description: 'The longitude of the point.'
+          example: 629.7417
+          required: true
+          schema:
+            type: number
+            description: 'The longitude of the point.'
+            example: 629.7417
+        -
+          in: query
+          name: radius
+          description: 'The radius in kilometers.'
+          example: 674.4154
+          required: true
+          schema:
+            type: number
+            description: 'The radius in kilometers.'
+            example: 674.4154
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Stations nearby retrieved successfully.'
+                  data: []
+                properties:
+                  message:
+                    type: string
+                    example: 'Stations nearby retrieved successfully.'
+                  data:
+                    type: array
+                    example: []
+      tags:
+        - Endpoints
+      security: []
+  /api/stations/create:
+    get:
+      summary: 'Show the form for creating a new resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+tags:
+  -
+    name: Endpoints
+    description: ''

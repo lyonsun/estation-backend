@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+
+  web:
+    image: nginx
+    container_name: estation-web
+    ports:
+      - 80:80
+    volumes:
+      - .:/app/estation-backend
+      - ./docker/site.conf:/etc/nginx/conf.d/site.conf
+    depends_on:
+      - api
+    networks:
+      estation-net:
+        aliases:
+          - estation-backend.local
+      
+  api:
+    build: .
+    container_name: estation-api
+    volumes:
+        - .:/app/estation-backend
+        - ./docker/php.ini:/usr/local/etc/php/php.ini
+    depends_on:
+      - db
+    networks:
+      - estation-net
+
+  db:
+    image: mysql:5.7
+    container_name: ${DB_HOST}
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_USER=${DB_USERNAME}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - ./database:/docker-entrypoint-initdb.d
+    networks:
+      - estation-net
+
+networks:
+  estation-net:
+    external: true
